@@ -6,11 +6,8 @@ const watchlistMoviesEl = document.getElementById('watchlist-movies')
 let searchedMovie = ``
 let searchResults = []
 let moviesData = []
-let watchlistMoviesData = JSON.parse(localStorage.getItem("watchlistMoviesData"))
+let watchlistMoviesData = JSON.parse(localStorage.getItem("watchlistMoviesData")) || []
 
-if (!watchlistMoviesData){
-    watchlistMoviesData = []
-}
 
 console.log(watchlistMoviesData)
 
@@ -36,15 +33,33 @@ function getMoviesData(){
 function renderMoviesHtml(){
 
     const moviesHtml = moviesData.map((movie => {
-        return `  <p>${movie.Title}</p>
-                  <p>${movie.Actors}</p>
-                  <p>${movie.Awards}</p>
-                  <p>${movie.Language}</p>
-                  <p>${movie.imdbRating}</p>
-                  <p>${movie.imdbID}</p>
-                  <button id="watchlist-btn" data-id="${movie.imdbID}">add to watchlist</button>
-                  
-                `
+        return `  
+                <div class="movie-container">
+                        <img src="${movie.Poster}"/>
+                        <div class="movie-info">
+                            <div>
+                                <h1>${movie.Title}</h1>
+                                <p>⭐️ : ${movie.imdbRating}</p>
+                            </div>
+
+                            <div>
+                                <p>${movie.Runtime}</p>
+                                <p>${movie.Genre}</p>
+                                <button id="watchlist-btn" data-id="${movie.imdbID}">
+                                    add to watchlist
+                                </button>
+
+                            </div>
+
+                            
+                            <p>${movie.Plot}</p>
+                        
+                        </div>        
+
+                </div> 
+
+                <br>
+               `
     }))
     
     movieTitlesEl.innerHTML = moviesHtml.join('')
@@ -116,10 +131,13 @@ document.addEventListener('click', e => {
 
 function renderWatchlistMoviesHtml(){
   
+    /* Could move all watchlist functionality to its own js file and 
+    render the function straight away, but i will just keep all the functionality 
+    in one file and call this function once the watchlist page loads*/
 
     if(watchlistMoviesData.length === 0){
 
-        let emptyHtml = `<p>Looking kinda empty</p>
+        const emptyHtml = `<p>Looking kinda empty</p>
         <p><a href="index.html">click here </a> to add some movies.</p>`
         console.log(emptyHtml)
         watchlistMoviesEl.innerHTML = emptyHtml
@@ -131,14 +149,34 @@ function renderWatchlistMoviesHtml(){
     else {
         
         const watchlistMoviesHtml = watchlistMoviesData.map((movie => {
-            return `  <p>${movie.Title}</p>
-                      <p>${movie.Actors}</p>
-                      <p>${movie.Awards}</p>
-                      <p>${movie.Language}</p>
-                      <p>${movie.imdbRating}</p>
-                      <p>${movie.imdbID}</p>
-                      <button id="remove-watchlist-btn" data-id="${movie.imdbID}">remove from watchlist</button>
-                    `
+            return `
+                     
+        <div class="movie-container">
+                <img src="${movie.Poster}"/>
+                <div class="movie-info">
+                    <div>
+                        <h1>${movie.Title}</h1>
+                        <p>⭐️ : ${movie.imdbRating}</p>
+                    </div>
+
+                    <div>
+                        <p>${movie.Runtime}</p>
+                        <p>${movie.Genre}</p>
+                        <button id="remove-watchlist-btn" data-id="${movie.imdbID}">remove from watchlist</button>
+                            
+
+                    </div>
+
+                    
+                    <p>${movie.Plot}</p>
+                
+                </div>        
+
+        </div> 
+
+        <br>
+                    
+                `
         }))
     
         
