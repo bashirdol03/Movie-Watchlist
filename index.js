@@ -18,7 +18,7 @@ function getMoviesData(){
     }))
 
     movieTitles.forEach(movie => {
-        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&t=${movie}`)
+        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&t=${movie}`)
         .then(res => res.json())
         .then(data => {
             moviesData.push(data)
@@ -202,7 +202,7 @@ function renderWatchlistMoviesHtml(){
 
 /* 
 const movieTitlesFullData = movieTitlesData.map(movie => {
-     fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&t=${movie}`)
+     fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&t=${movie}`)
         .then(res => res.json())
         .then(data => data)
     })
@@ -212,7 +212,7 @@ const movieTitlesFullData = movieTitlesData.map(movie => {
 
     console.log(listOfMovieTitles)   
 
-    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&t=${movieTitles[0]}`)
+    fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&t=${movieTitles[0]}`)
         .then(res => res.json())
         .then(data => console.log(data))
     
@@ -246,7 +246,7 @@ searchBtn.addEventListener('click', () => {
     if(searchInput.value){
         searchedMovie = searchInput.value
         console.log(searchedMovie)
-        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&s=${searchedMovie}`)
+        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=ba2bbbf5&s=${searchedMovie}`)
             .then(res => res.json())
             .then(data => {
             console.log(data) 
