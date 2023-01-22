@@ -137,8 +137,7 @@ function renderWatchlistMoviesHtml(){
 
     if(watchlistMoviesData.length === 0){
 
-        const emptyHtml = `<p>Looking kinda empty</p>
-        <p><a href="index.html">click here </a> to add some movies.</p>`
+        const emptyHtml = ` <p class="message">Looking kinda empty, <a href="index.html">click here</a> to add some movies.</p>`
         console.log(emptyHtml)
         watchlistMoviesEl.innerHTML = emptyHtml
 
@@ -257,14 +256,14 @@ searchBtn.addEventListener('click', () => {
                 getMoviesData()
             }
             else if (data.Error === 'Too many results.'){
-                movieTitlesEl.innerHTML = `There are too many results, please be more specific and try another search`
+                movieTitlesEl.innerHTML = `<h1 class="message" >There are too many results, please be more specific and try another search </h1>`
             }   
-            else (movieTitlesEl.innerHTML = `Title does not exist, please try another search`)
+            else (movieTitlesEl.innerHTML = `<h1 class="message" >Title does not exist, please try another search </h1>`)
             
         })
     }
     else {
-        movieTitlesEl.innerHTML = ` you need to search for a movie`
+        movieTitlesEl.innerHTML = ` <h1 class="message" >you need to search for a movie</h1>`
     }    
 })
 

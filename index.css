@@ -3,20 +3,29 @@ html, body {
     padding: 0;
     font-family: 'Inter', sans-serif;
     text-align: center;
+    background-color: black;
+    
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .header-section{
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 30vh;
     margin: 0 auto;
-    background-color: black;
-    color: white;
+    background-color: #2C4047;
+    color: #90CAE0;
     padding: 3em 1em;
     gap: 3em;
     
    
+}
+
+.header-section h1{
+    font-size: 4rem;
 }
 
 .title-section ,.input-section{
@@ -28,26 +37,70 @@ html, body {
     
 }
 
-.header-section a {
-    color : white;
+ a {
+    color : #90CAE0;
     text-decoration: none;
+    border-bottom: 2px dotted #8BCAE0;
+
+}
+
+.input-section{
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    
+}
+
+.input-section button {
+    padding: 0.42em;
+    font-size: 1.5rem;
 }
 
 input {
     width: 100%;
     align-self: stretch;
+    color: #2E4047;
+    background-color: #90CAE0;
+    border-radius: 10px;
+    padding: 1em;
+    font-size: 1.5rem;
 }
+
+p{
+    
+    line-height: 1.5em
+}
+
+
 
 main{
     margin : 0 auto;
+    background-color: #327894;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+   
+}
+
+.message {
+    color: #90CAE0;
+    font-size: 4rem;
+    padding-bottom: 50%;
 }
 
 .movie-container {
-    margin : 0 auto;
+    width: 70vw;
+    margin: 0 auto;
     display: flex;
     text-align: center;
-    justify-content: center;
+    justify-content: space-around;
+    background-color: #8BCAE0;
+    padding: 3em 1em;
+    border-radius: 10px;
+    gap: 2em;
 }
+
 
 .movie-container img{
     display: block;
@@ -59,6 +112,11 @@ main{
     display: flex;
     flex-direction: column;
     width: 600px;
+    text-align: left;
+    padding: 0 1em;
+    color: #90CAE0;
+    background-color: #214761;
+    
 }
 
 .movie-info div{
@@ -66,5 +124,12 @@ main{
     align-items: center;
     justify-content: space-around;
     gap: 5px
+}
+
+button{
+    color: #2E4047;
+    background-color: #90CAE0;
+    border-radius: 10px;
+
 }
 
