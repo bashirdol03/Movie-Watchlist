@@ -86,7 +86,7 @@ main{
 .message {
     color: #90CAE0;
     font-size: 4rem;
-    padding-bottom: 50%;
+    padding-bottom: 100vh;
 }
 
 .movie-container {
