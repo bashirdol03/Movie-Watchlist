@@ -2,6 +2,10 @@ const searchBtn = document.getElementById('search-btn')
 const searchInput = document.getElementById('search-input')
 const movieTitlesEl = document.getElementById('movie-titles')
 const watchlistMoviesEl = document.getElementById('watchlist-movies')
+const messageBoxEl = document.getElementById('message-box')
+const watchlistMessageBoxEl = document.getElementById('watchlist-message-box')
+   
+
 
 let searchedMovie = ``
 let searchResults = []
@@ -37,28 +41,28 @@ function renderMoviesHtml(){
                 <div class="movie-container">
                         <img src="${movie.Poster}"/>
                         <div class="movie-info">
-                            <div>
-                                <h1>${movie.Title}</h1>
-                                <p>⭐️ : ${movie.imdbRating}</p>
+                            <div class="movie-title">
+                                <h2>${movie.Title}</h2>
+                                <p><span>⭐️</span>${movie.imdbRating}</p>
                             </div>
 
-                            <div>
+                            <div class="movie-time">
                                 <p>${movie.Runtime}</p>
                                 <p>${movie.Genre}</p>
                                 <button id="watchlist-btn" data-id="${movie.imdbID}">
-                                    add to watchlist
+                                <i class="fa-solid fa-circle-plus" style="color: #000000;"></i> Watchlist
                                 </button>
 
                             </div>
 
                             
-                            <p>${movie.Plot}</p>
+                            <p class="text-content">${movie.Plot}</p>
                         
                         </div>        
 
                 </div> 
 
-                <br>
+                
                `
     }))
     
@@ -137,7 +141,15 @@ function renderWatchlistMoviesHtml(){
 
     if(watchlistMoviesData.length === 0){
 
-        const emptyHtml = ` <p class="message">Looking kinda empty, <a href="index.html">click here</a> to add some movies.</p>`
+        const emptyHtml = ` 
+
+        <div class="message-container watchlist-message" id="watchlist-message-box">    
+        <h3>Your watchlist is looking a little empty...</h3>
+        <p><a href="index.html" target="_blank"><i class="fa-solid fa-circle-plus" style="color: #000000;"></i>Lets add some movies</a></p>
+    </div>   
+
+        
+        `
         console.log(emptyHtml)
         watchlistMoviesEl.innerHTML = emptyHtml
 
@@ -148,34 +160,34 @@ function renderWatchlistMoviesHtml(){
     else {
         
         const watchlistMoviesHtml = watchlistMoviesData.map((movie => {
-            return `
-                     
-        <div class="movie-container">
-                <img src="${movie.Poster}"/>
-                <div class="movie-info">
-                    <div>
-                        <h1>${movie.Title}</h1>
-                        <p>⭐️ : ${movie.imdbRating}</p>
-                    </div>
+            return `<div class="movie-container">
+                        <img src="${movie.Poster}"/>
+                        <div class="movie-info">
+                            <div class="movie-title">
+                                <h2>${movie.Title}</h2>
+                                <p><span>⭐️</span>${movie.imdbRating}</p>
+                            </div>
 
-                    <div>
-                        <p>${movie.Runtime}</p>
-                        <p>${movie.Genre}</p>
-                        <button id="remove-watchlist-btn" data-id="${movie.imdbID}">remove from watchlist</button>
+                            <div class="movie-time">
+                                <p>${movie.Runtime}</p>
+                                <p>${movie.Genre}</p>
+                                <button id="remove-watchlist-btn" data-id="${movie.imdbID}">
+                                <i class="fa-solid fa-circle-minus" style="color: #000000;"></i>
+                                Remove
+                                </button>
+
+                            </div>
+
                             
+                            <p class="text-content">${movie.Plot}</p>
+                        
+                        </div>        
 
-                    </div>
+                </div> 
 
-                    
-                    <p>${movie.Plot}</p>
                 
-                </div>        
+               `
 
-        </div> 
-
-        <br>
-                    
-                `
         }))
     
         
@@ -241,6 +253,7 @@ function renderHtml(){
 
 
 searchBtn.addEventListener('click', () => {
+     
     
     moviesData = []
     if(searchInput.value){
@@ -256,14 +269,14 @@ searchBtn.addEventListener('click', () => {
                 getMoviesData()
             }
             else if (data.Error === 'Too many results.'){
-                movieTitlesEl.innerHTML = `<h1 class="message" >There are too many results, please be more specific and try another search </h1>`
+                messageBoxEl.innerHTML = `<h3 class="message" >There are too many results, please be more specific and try another search </h3>`
             }   
-            else (movieTitlesEl.innerHTML = `<h1 class="message" >Title does not exist, please try another search </h1>`)
+            else (messageBoxEl.innerHTML = `<h3 class="message" >Unable to find what you are looking for, please try another search </h3>`)
             
         })
     }
     else {
-        movieTitlesEl.innerHTML = ` <h1 class="message" >you need to search for a movie</h1>`
+        messageBoxEl.innerHTML = ` <h3 class="message" >You need to search for a movie</h3>`
     }    
 })
 

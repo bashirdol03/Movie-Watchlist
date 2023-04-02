@@ -1,26 +1,34 @@
 <html>
     <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" >
+        
+       
     </head>
     <body>
 
-        <div class="header-section">
+        <div class="header-section movie-background">
             <div class="title-section">
-                <h1>Find your film</h1>
-                <p><a href="watchlist.html" >Watchlist</a></p>
+                <h1>Find your film </h1>
+                <p><a href="watchlist.html" target="_blank" >My Watchlist</a></p>
             </div>    
             <div class="input-section">
+                <i class="fas fa-sharp fa-regular fa-magnifying-glass" style="color: #9ca3af;"></i>
                 <input id="search-input" type="text" placeholder="Type your movie"/>
-                <button id="search-btn">Search Movie</button>
+                <button id="search-btn">Search</button>
             </div>  
         </div>  
     
         <main id="movie-titles">
 
-            <h1 class="message">Start exploring!</h1>
+           <div class="message message-container" id="message-box">
+            <img src="images/film-reel.jpg" />
+            <h1>Start exploring!</h1>
+            
+           </div>  
                   
         </main>
         
